@@ -17,7 +17,7 @@ services:
       - ${PATH_TO_DATA}:/mnt/media:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
-      - ${PATH_TO_ENV}/immich.env
+      - immich.env
     ports:
       - '2283:2283'
     depends_on:
@@ -36,7 +36,7 @@ services:
     volumes:
       - ${ML_CACHE_LOCATION}:/cache
     env_file:
-      - .env
+      - immich.env
     restart: always
     healthcheck:
       disable: false
