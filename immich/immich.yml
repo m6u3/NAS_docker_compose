@@ -17,7 +17,7 @@ services:
       - ${PATH_TO_DATA}:/mnt/media:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
-      - immich.env
+      - ${PATH_TO_ENV}/immich.env
     ports:
       - '2283:2283'
     depends_on:
