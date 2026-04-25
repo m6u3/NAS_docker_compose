@@ -14,7 +14,7 @@ services:
       service: nvenc
     volumes:
       - ${UPLOAD_LOCATION}:/data
-      - ${PATH_TO_DAT}:/mnt/media:ro
+      - ${PATH_TO_DATA}:/mnt/media:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
