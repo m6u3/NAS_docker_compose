@@ -54,10 +54,3 @@ services:
       - 8096:8096
     logging: *default-logging
     restart: unless-stopped
-    networks:
-      - cf_tunnel_network
-
-networks:
-  cf_tunnel_network:
-    name: cf_tunnel_network
-    external: true
