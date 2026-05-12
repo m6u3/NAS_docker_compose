@@ -3,18 +3,29 @@
 
 # immich
 # 
-
+#########################
+#     General Info      #
+#########################
 name: immich
 services:
+  #########################
+  #     Immich Server     #
+  #########################
   immich-server:
     container_name: immich_server
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+    user: ${DOCKER_USER}
     extends:
       file: hwaccel.transcoding.yml
       service: nvenc
+    environment:
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+      - FFPROBE_PATH=/usr/lib/jellyfin-ffmpeg/ffprobe
+      - FFMPEG_PATH=/usr/lib/jellyfin-ffmpeg/ffmpeg
     volumes:
       - ${UPLOAD_LOCATION}:/data
-      - ${PATH_TO_DATA}:/mnt/media:ro
+      - ${PATH_TO_DATA}:/mnt/media
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - immich.env
@@ -26,13 +37,17 @@ services:
     restart: always
     healthcheck:
       disable: false
-
+      
+  ###########################
+  # Immich Machine Learning #
+  ###########################
   immich-machine-learning:
     container_name: immich_machine_learning
-    image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}
+    image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}-cuda
+    user: ${DOCKER_USER}
     extends:
       file: hwaccel.ml.yml
-      service: cpu
+      service: cuda
     volumes:
       - ${ML_CACHE_LOCATION}:/cache
     env_file:
@@ -40,7 +55,10 @@ services:
     restart: always
     healthcheck:
       disable: false
-
+      
+  #########################
+  #        Redis          #
+  #########################
   redis:
     container_name: immich_redis
     image: docker.io/valkey/valkey:9@sha256:3b55fbaa0cd93cf0d9d961f405e4dfcc70efe325e2d84da207a0a8e6d8fde4f9
@@ -48,6 +66,9 @@ services:
       test: redis-cli ping || exit 1
     restart: always
 
+  #########################
+  # Immich DB (Postgres)  #
+  #########################
   database:
     container_name: immich_postgres
     image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
