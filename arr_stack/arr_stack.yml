@@ -106,8 +106,9 @@ services:
       - TZ=${TZ_NY}
     volumes:
       - ${PATH_TO_SSD_APPDATA}/radarr:/config
-      - ${PATH_TO_DATA}/media/movies:/movies
-      - ${PATH_TO_DATA}/downloads:/downloads
+      - ${PATH_TO_DATA}:/data
+      # - ${PATH_TO_DATA}/media/movies:/movies
+      # - ${PATH_TO_DATA}/downloads:/downloads
     logging: *default-logging
     restart: unless-stopped
 
@@ -124,8 +125,9 @@ services:
       - TZ=${TZ_NY}
     volumes:
       - ${PATH_TO_DATA}/appdata/sonarr:/config
-      - ${PATH_TO_DATA}/media/series:/tvshows
-      - ${PATH_TO_DATA}/downloads:/downloads
+      - ${PATH_TO_DATA}:/data
+      # - ${PATH_TO_DATA}/media/series:/tvshows
+      # - ${PATH_TO_DATA}/downloads:/downloads
     logging: *default-logging
     restart: unless-stopped
 
