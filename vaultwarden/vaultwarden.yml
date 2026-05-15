@@ -20,5 +20,6 @@ services:
       - ${PATH_TO_SSD_APPDATA}/vaultwarden:/data
     environment:
       - WEBSOCKET_ENABLED=true
+      - ADMIN_TOKEN=${ADMIN_TOKEN}
     restart: unless-stopped
 
