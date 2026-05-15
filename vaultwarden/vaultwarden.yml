@@ -18,5 +18,7 @@ services:
       - 8084:80
     volumes:
       - ${PATH_TO_SSD_APPDATA}/vaultwarden:/data
+    environment:
+      - WEBSOCKET_ENABLED=true
     restart: unless-stopped
 
