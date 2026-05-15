@@ -13,6 +13,7 @@ services:
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden
+    user: 100:100
     ports:
       - 8084:80
     volumes:
