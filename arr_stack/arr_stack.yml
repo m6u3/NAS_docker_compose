@@ -228,6 +228,9 @@ services:
       - PGID=${DOCKER_USER_PGID}
       - TZ=${TZ_NY}
       #- FIREFOX_CLI=https://www.linuxserver.io/ #optional
+      - DOT=off
+      - DNS_PLAINTEXT_ADDRESS=1.1.1.1
+      - WIREGUARD_MTU=1320
     volumes:
       - ${PATH_TO_SSD_APPDATA}/firefox/config:/config
       - ${PATH_TO_DATA}/downloads/firefox:/downloads
