@@ -12,8 +12,10 @@ services:
       - PGID=${DOCKER_USER_PGID}
       - TZ=${TZ_NY}
       - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
-      - DOCKER_MODS=linuxserver/mods:universal-docker-cli
+      - DOCKER_MODS=linuxserver/mods:universal-docker
       # - CLI_ARGS=--webservice-password=admin --webservice-disable-signin-tokens=true
+    group_add:
+      - "989"
     volumes:
       - ${PATH_TO_SSD_APPDATA}/duplicati:/config
       - ${PATH_TO_SSD_APPDATA}/actual_budget:/source/actual_budget
