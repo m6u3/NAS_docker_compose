@@ -43,6 +43,7 @@ services:
               capabilities: [gpu, video, compute]  
     volumes:
       - ${PATH_TO_SSD_APPDATA}/jellyfin/library:/config
+      - ${PATH_TO_SSD_APPDATA}/jellyfin/transcodes:/transcodes
       - ${PATH_TO_DATA}/media/series:/tvshows
       - ${PATH_TO_DATA}/media/movies:/movies
       - ${PATH_TO_DATA}/personal-data/pictures:/photos
