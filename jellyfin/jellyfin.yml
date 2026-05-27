@@ -25,9 +25,6 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    group_add:
-      - "44"   # Host 'video' group
-      - "105"  # Host 'render' group
     environment:
       - PUID=${DOCKER_USER_PUID}
       - PGID=${DOCKER_USER_PGID}
