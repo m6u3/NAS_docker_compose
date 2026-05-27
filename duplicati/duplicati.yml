@@ -20,7 +20,7 @@ services:
       - ${PATH_TO_SSD_APPDATA}/duplicati:/config
       - ${PATH_TO_SSD_APPDATA}/actual_budget:/source/actual_budget
       - ${PATH_TO_SSD_APPDATA}/vaultwarden:/source/vaultwarden
-      - ${PATH_TO_SSD_APPDATA}/jellyfin/library/data:/source/jellyfin
+      - ${PATH_TO_SSD_APPDATA}/jellyfin:/source/jellyfin
       - ${PATH_TO_DATA}/personal-data:/source/personal-data
       - ${PATH_TO_DATA}/immich:/source/immich
       # - ${LOCAL_BACKUP_DIRECTORY}:/backups/rolohost_server
