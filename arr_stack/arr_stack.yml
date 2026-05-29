@@ -43,9 +43,12 @@ services:
       - SERVER_COUNTRIES=United States
       - UPDATER_PROTONVPN_EMAIL=${PROTON_EMAIL}
       - UPDATER_PROTONVPN_PASSWORD=${PROTON_PASSWORD}
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0'
+      - VPN_PORT_FORWARDING_DOWN_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":0}" http://127.0.0'
     ports:
       - 8080:8080 #qbittorrent
-      - 6881:6881/udp #qbittorrent
+      - 6881:6881 #qbittorrent TCP port mapping for incoming connections
+      - 6881:6881/udp #qbittorrent torrent traffic
       - 9696:9696 #prowlarr
       - 7878:7878 #radarr
       - 8989:8989 #sonarr
