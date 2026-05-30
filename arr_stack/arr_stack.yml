@@ -77,6 +77,21 @@ services:
     restart: unless-stopped
 
   #########################
+  # Qbit-Port-Sync           #
+  #########################
+  qbit-port-sync:
+    image: joshuacox/qbittorrent-port-forward-gluetun:latest
+    container_name: qbit-port-sync
+    restart: always
+    network_mode: "service:gluetun"
+    environment:
+      - QBITTORRENT_SERVER=127.0.0.1
+      - QBITTORRENT_PORT=8080
+      - PORT_FILE=/tmp/gluetun/forwarded_port
+    volumes:
+      - gluetun_tmp:/tmp/gluetun:ro
+
+  #########################
   # Prowlarr              #
   #########################
   prowlarr:
@@ -235,3 +250,7 @@ services:
       - ${PATH_TO_DATA}/downloads/firefox:/downloads
     shm_size: "1gb"
     restart: unless-stopped
+
+
+volumes:
+  gluetun_tmp:
