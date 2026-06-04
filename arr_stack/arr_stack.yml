@@ -87,6 +87,7 @@ services:
   pyload-ng:
     image: lscr.io/linuxserver/pyload-ng:latest
     container_name: pyload-ng
+    network_mode: "service:gluetun"
     environment:
       - PUID=${DOCKER_USER_PUID}
       - PGID=${DOCKER_USER_PGID}
@@ -94,6 +95,7 @@ services:
     volumes:
       - ${PATH_TO_SSD_APPDATA}/pyload/config:/config
       - ${PATH_TO_DATA}/downloads/pyload:/downloads
+      - ${PATH_TO_DATA}/seeds:/seeds
     restart: unless-stopped
 
   #########################
