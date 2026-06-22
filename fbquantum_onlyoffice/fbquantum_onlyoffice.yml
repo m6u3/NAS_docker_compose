@@ -30,7 +30,7 @@ services:
   #     ONLY OFFICE       #
   #########################
   onlyoffice:
-    image: thomisus/Docker-DocumentServer
+    image: thomisus/docker-documentserver:latest
     container_name: onlyoffice
     restart: unless-stopped
     environment:
