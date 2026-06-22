@@ -30,7 +30,7 @@ services:
   #     ONLY OFFICE       #
   #########################
   onlyoffice:
-    image: onlyoffice/documentserver:latest
+    image: cmwedding/onlyoffice-licensed
     container_name: onlyoffice
     restart: unless-stopped
     environment:
