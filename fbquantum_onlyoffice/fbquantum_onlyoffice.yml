@@ -30,7 +30,7 @@ services:
   #     ONLY OFFICE       #
   #########################
   onlyoffice:
-    image: cmwedding/onlyoffice-licensed
+    image: thomisus/Docker-DocumentServer
     container_name: onlyoffice
     restart: unless-stopped
     environment:
