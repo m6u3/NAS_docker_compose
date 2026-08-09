@@ -14,9 +14,9 @@ services:
     command: 
       - "tunnel"
       - "--no-autoupdate"
+      - "--no-prechecks"
       - "--protocol"
       - "http2"
-      - "--no-pingperminute"
       - "run"
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
