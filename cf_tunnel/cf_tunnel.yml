@@ -11,7 +11,13 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
     restart: unless-stopped
-    command: "tunnel --no-autoupdate --protocol http2 run"
+    command: 
+      - "tunnel"
+      - "--no-autoupdate"
+      - "--protocol"
+      - "http2"
+      - "--no-pingperminute"
+      - "run"
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
     networks:
