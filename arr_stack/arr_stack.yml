@@ -54,8 +54,9 @@ services:
       - 8686:8686 #lidarr
       - 5299:5299 #lazylibrarian
       - 6767:6767 #bazarr
-      - 3000:3000 # http firefox
-      - 3001:3001 # https firefox
+      - 3000:3000 #http firefox
+      - 3001:3001 #https firefox
+      - 8200:8200 #duplicati
       # - 9666:9666 #pyload Click'N'Load port optional
       # - 8265:8265 # Tdarr WebUI
       # - 8266:8266 # Tdarr Server
@@ -257,4 +258,31 @@ services:
       - ${PATH_TO_SSD_APPDATA}/firefox/config:/config
       - ${PATH_TO_DATA}/downloads/firefox:/downloads
     shm_size: "1gb"
+    restart: unless-stopped
+
+  #########################
+  # Duplicati             #
+  #########################
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    network_mode: "service:gluetun"
+    container_name: duplicati
+    environment:
+      - PUID=${DOCKER_USER_PUID}
+      - PGID=${DOCKER_USER_PGID}
+      - TZ=${TZ_NY}
+      - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
+      - DOCKER_MODS=linuxserver/mods:universal-docker
+      # - CLI_ARGS=--webservice-password=admin --webservice-disable-signin-tokens=true
+    group_add:
+      - "989"
+    volumes:
+      - ${PATH_TO_SSD_APPDATA}/duplicati:/config
+      - ${PATH_TO_SSD_APPDATA}/actual_budget:/source/actual_budget
+      - ${PATH_TO_SSD_APPDATA}/vaultwarden:/source/vaultwarden
+      - ${PATH_TO_SSD_APPDATA}/jellyfin:/source/jellyfin
+      - ${PATH_TO_DATA}/personal-data:/source/personal-data
+      - ${PATH_TO_DATA}/immich:/source/immich
+      # - ${LOCAL_BACKUP_DIRECTORY}:/backups/rolohost_server
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
