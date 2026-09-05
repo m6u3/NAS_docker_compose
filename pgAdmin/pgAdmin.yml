@@ -8,7 +8,6 @@
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     restart: no
-    user: ${DOCKER_USER}
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PG_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PG_PASSWORD}
