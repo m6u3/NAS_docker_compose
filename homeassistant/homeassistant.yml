@@ -8,7 +8,7 @@
 # https://hub.docker.com/r/linuxserver/homeassistant
 services:
   homeassistant:
-    image: lscr.io/linuxserver/homeassistant:stable
+    image: lscr.io/linuxserver/homeassistant:latest
     container_name: homeassistant
     network_mode: host
     environment:
