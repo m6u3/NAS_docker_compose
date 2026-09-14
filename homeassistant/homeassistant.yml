@@ -12,10 +12,10 @@ services:
     container_name: homeassistant
     network_mode: host
     environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=Etc/UTC
+      - PUID=${DOCKER_USER_PUID}
+      - PGID=${DOCKER_USER_PGID}
+      - TZ=${TZ_NY}
     volumes:
-      - /RoloVault/Data/homeassistant:/config
+      - ${PATH_TO_SSD_APPDATA}/homeassistant:/config
     restart: unless-stopped
 
