@@ -18,9 +18,3 @@ services:
     volumes:
       - ${PATH_TO_SSD_APPDATA}/homeassistant:/config
     restart: unless-stopped
-
-networks: 
-  cf_tunnel_network:
-    name: cf_tunnel_network
-    external: true
-
