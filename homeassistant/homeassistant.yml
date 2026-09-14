@@ -17,9 +17,10 @@ services:
       - TZ=${TZ_NY}
     volumes:
       - ${PATH_TO_SSD_APPDATA}/homeassistant:/config
-    http:
-      use_x_forwarded_for: true
-      trusted_proxies:
-        - 172.16.0.0/12
     restart: unless-stopped
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.16.0.0/12
 
