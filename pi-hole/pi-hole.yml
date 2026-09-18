@@ -18,8 +18,8 @@ services:
     environment:
       TZ: America/New_York
       FTLCONF_webserver_api_password: ${PI_PASSWORD}
-      FTLCONF_dns_listeningMode: ALL
-      WEB_PORT: 8082
+      FTLCONF_dns_listeningMode: all
+      FTLCONF_webserver_port: '8082, [::]:8082'
     volumes:
       - ${PATH_TO_SSD_APPDATA}/pihole/etc-pihole:/etc/pihole
       - ${PATH_TO_SSD_APPDATA}/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
