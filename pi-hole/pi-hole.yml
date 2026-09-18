@@ -10,14 +10,16 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 8082:80/tcp
+    network_mode: host                 # <-- 1. Added Host Network Mode
+    # ports:                           # <-- 2. Removed/Commented out ports section
+    #   - 53:53/tcp
+    #   - 53:53/udp
+    #   - 8082:80/tcp
     environment:
       TZ: America/New_York
       FTLCONF_webserver_api_password: ${PI_PASSWORD}
-      FTLCONF_dns_listeningMode: ALL
+      FTLCONF_dns_listeningMode: all   # <-- lowercase "all" is preferred by FTL
+      WEB_PORT: 8082                   # <-- 3. Forces the Pi-hole Web UI to stay on port 8082
     volumes:
       - ${PATH_TO_SSD_APPDATA}/pihole/etc-pihole:/etc/pihole
       - ${PATH_TO_SSD_APPDATA}/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
@@ -28,3 +30,4 @@ services:
       - NET_ADMIN
     restart: unless-stopped
 networks: {}
+
