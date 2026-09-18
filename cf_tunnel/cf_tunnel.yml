@@ -20,9 +20,3 @@ services:
       - "run"
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-    networks:
-      - cf_tunnel_network
-
-networks:
-  cf_tunnel_network:
-    name: cf_tunnel_network
