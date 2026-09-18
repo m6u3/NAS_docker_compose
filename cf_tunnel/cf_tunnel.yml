@@ -11,13 +11,19 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
     restart: unless-stopped
-    network_mode: host
+    #network_mode: host
     command: 
       - "tunnel"
       - "--no-autoupdate"
       - "--no-prechecks"
       - "--protocol"
-      - "quic"
+      - "auto"
       - "run"
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+      - cf_tunnel_network
+
+networks:
+  cf_tunnel_network:
+    external: true
