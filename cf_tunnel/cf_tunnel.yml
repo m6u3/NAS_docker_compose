@@ -11,7 +11,6 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
     restart: unless-stopped
-    network_mode: host
     command: 
       - "tunnel"
       - "--no-autoupdate"
@@ -21,10 +20,10 @@ services:
       - "run"
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-#     networks:
-#       - cf_tunnel_network
+    networks:
+      - cf_tunnel_network
 
-# networks:
-#   cf_tunnel_network:
-#     name:  cf_tunnel_network
-#     external: true
+networks:
+  cf_tunnel_network:
+    name:  cf_tunnel_network
+    external: true
