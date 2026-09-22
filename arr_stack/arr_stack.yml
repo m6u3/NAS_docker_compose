@@ -48,7 +48,6 @@ services:
     ports:
       - 8080:8080 #qbittorrent
       - 8001:8001 #pyload
-      - 8085:8081 #Metube
       - 9696:9696 #prowlarr
       - 7878:7878 #radarr
       - 8989:8989 #sonarr
@@ -287,21 +286,4 @@ services:
       # - ${LOCAL_BACKUP_DIRECTORY}:/backups/rolohost_server
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
-
-  #########################
-  # Metube             #
-  #########################
-  metube:
-    image: ghcr.io/alexta69/metube
-    container_name: metube
-    network_mode: "service:gluetun"
-    restart: unless-stopped
-    environment:
-      - PUID=${DOCKER_USER_PUID}
-      - PGID=${DOCKER_USER_PGID}
-      - TZ=${TZ_NY}
-      - DOWNLOAD_DIR=/downloads
-    volumes:
-      - ${PATH_TO_SSD_APPDATA}/metube:/config
-      - ${PATH_TO_DATA}/downloads/metube:/downloads
 
