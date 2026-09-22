@@ -57,6 +57,7 @@ services:
       - 3000:3000 #http firefox
       - 3001:3001 #https firefox
       - 8200:8200 #duplicati
+      - 8086:8081 #Metube
       # - 9666:9666 #pyload Click'N'Load port optional
       # - 8265:8265 # Tdarr WebUI
       # - 8266:8266 # Tdarr Server
@@ -286,3 +287,20 @@ services:
       # - ${LOCAL_BACKUP_DIRECTORY}:/backups/rolohost_server
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
+
+  #########################
+  # Metube             #
+  #########################
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    restart: unless-stopped
+    environment:
+      - PUID=${DOCKER_USER_PUID}
+      - PGID=${DOCKER_USER_PGID}
+      - TZ=${TZ_NY}
+      - DOWNLOAD_DIR=/downloads
+    volumes:
+      - ${PATH_TO_SSD_APPDATA}/metube:/config
+      - ${PATH_TO_DATA}/downloads/metube:/downloads
+
