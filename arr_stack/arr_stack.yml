@@ -57,7 +57,7 @@ services:
       - 3000:3000 #http firefox
       - 3001:3001 #https firefox
       - 8200:8200 #duplicati
-      - 8086:8081 #Metube
+      - 8081:8086 #Metube
       # - 9666:9666 #pyload Click'N'Load port optional
       # - 8265:8265 # Tdarr WebUI
       # - 8266:8266 # Tdarr Server
