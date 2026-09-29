@@ -166,7 +166,7 @@ services:
       - PGID=${DOCKER_USER_PGID}
       - TZ=${TZ_NY}
     volumes:
-      - ${PATH_TO_DATA}/appdata/lidarr:/config
+      - ${PATH_TO_SSD_APPDATA}/lidarr:/config
       - ${PATH_TO_DATA}/media/music:/music
       - ${PATH_TO_DATA}/downloads:/downloads
     logging: *default-logging
