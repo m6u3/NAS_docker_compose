@@ -167,8 +167,9 @@ services:
       - TZ=${TZ_NY}
     volumes:
       - ${PATH_TO_SSD_APPDATA}/lidarr:/config
-      - ${PATH_TO_DATA}/media/music:/music
-      - ${PATH_TO_DATA}/downloads:/downloads
+      - ${PATH_TO_DATA}:/data
+      # - ${PATH_TO_DATA}/media/music:/music
+      # - ${PATH_TO_DATA}/downloads:/downloads
     logging: *default-logging
     restart: unless-stopped
 
@@ -186,8 +187,9 @@ services:
       - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
     volumes:
       - ${PATH_TO_SSD_APPDATA}/lazylibrarian:/config
-      - ${PATH_TO_DATA}/downloads/:/downloads
-      - ${PATH_TO_DATA}/media/books:/books #optional
+      - ${PATH_TO_DATA}:/data
+      # - ${PATH_TO_DATA}/downloads/:/downloads
+      # - ${PATH_TO_DATA}/media/books:/books #optional
     restart: unless-stopped
 
   #########################
