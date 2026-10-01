@@ -147,7 +147,7 @@ services:
       - PGID=${DOCKER_USER_PGID}
       - TZ=${TZ_NY}
     volumes:
-      - ${PATH_TO_DATA}/appdata/sonarr:/config
+      - ${PATH_TO_SSD_APPDATA}/sonarr:/config
       - ${PATH_TO_DATA}:/data
       # - ${PATH_TO_DATA}/media/series:/tvshows
       # - ${PATH_TO_DATA}/downloads:/downloads
