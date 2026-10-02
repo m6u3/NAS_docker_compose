@@ -176,38 +176,38 @@ services:
   #########################
   # LazyLibrarian         #
   #########################
-  lazylibrarian:
-    image: lscr.io/linuxserver/lazylibrarian:latest
-    container_name: lazylibrarian
-    network_mode: "service:gluetun"
-    environment:
-      - PUID=${DOCKER_USER_PUID}
-      - PGID=${DOCKER_USER_PGID}
-      - TZ=${TZ_NY}
-      - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
-    volumes:
-      - ${PATH_TO_SSD_APPDATA}/lazylibrarian:/config
-      - ${PATH_TO_DATA}:/data
-      # - ${PATH_TO_DATA}/downloads/:/downloads
-      # - ${PATH_TO_DATA}/media/books:/books #optional
-    restart: unless-stopped
+  # lazylibrarian:
+  #   image: lscr.io/linuxserver/lazylibrarian:latest
+  #   container_name: lazylibrarian
+  #   network_mode: "service:gluetun"
+  #   environment:
+  #     - PUID=${DOCKER_USER_PUID}
+  #     - PGID=${DOCKER_USER_PGID}
+  #     - TZ=${TZ_NY}
+  #     - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
+  #   volumes:
+  #     - ${PATH_TO_SSD_APPDATA}/lazylibrarian:/config
+  #     - ${PATH_TO_DATA}:/data
+  #     # - ${PATH_TO_DATA}/downloads/:/downloads
+  #     # - ${PATH_TO_DATA}/media/books:/books #optional
+  #   restart: unless-stopped
 
-  #########################
-  # Bazarr                #
-  #########################
-  bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
-    container_name: bazarr
-    network_mode: "service:gluetun"
-    environment:
-      - PUID=${DOCKER_USER_PUID}
-      - PGID=${DOCKER_USER_PGID}
-      - TZ=${TZ_NY}
-    volumes:
-      -  ${PATH_TO_SSD_APPDATA}/bazarr:/config
-      -  ${PATH_TO_DATA}/media/movies:/movies #optional
-      -  ${PATH_TO_DATA}/media/series:/tvshows #optional
-    restart: unless-stopped
+  # #########################
+  # # Bazarr                #
+  # #########################
+  # bazarr:
+  #   image: lscr.io/linuxserver/bazarr:latest
+  #   container_name: bazarr
+  #   network_mode: "service:gluetun"
+  #   environment:
+  #     - PUID=${DOCKER_USER_PUID}
+  #     - PGID=${DOCKER_USER_PGID}
+  #     - TZ=${TZ_NY}
+  #   volumes:
+  #     -  ${PATH_TO_SSD_APPDATA}/bazarr:/config
+  #     -  ${PATH_TO_DATA}/media/movies:/movies #optional
+  #     -  ${PATH_TO_DATA}/media/series:/tvshows #optional
+  #   restart: unless-stopped
 
   #########################
   # Tdarr                #
