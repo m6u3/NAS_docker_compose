@@ -195,19 +195,19 @@ services:
   # #########################
   # # Bazarr                #
   # #########################
-  # bazarr:
-  #   image: lscr.io/linuxserver/bazarr:latest
-  #   container_name: bazarr
-  #   network_mode: "service:gluetun"
-  #   environment:
-  #     - PUID=${DOCKER_USER_PUID}
-  #     - PGID=${DOCKER_USER_PGID}
-  #     - TZ=${TZ_NY}
-  #   volumes:
-  #     -  ${PATH_TO_SSD_APPDATA}/bazarr:/config
-  #     -  ${PATH_TO_DATA}/media/movies:/movies #optional
-  #     -  ${PATH_TO_DATA}/media/series:/tvshows #optional
-  #   restart: unless-stopped
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=${DOCKER_USER_PUID}
+      - PGID=${DOCKER_USER_PGID}
+      - TZ=${TZ_NY}
+    volumes:
+      -  ${PATH_TO_SSD_APPDATA}/bazarr:/config
+      -  ${PATH_TO_DATA}/media/movies:/movies #optional
+      -  ${PATH_TO_DATA}/media/series:/tvshows #optional
+    restart: unless-stopped
 
   #########################
   # Tdarr                #
