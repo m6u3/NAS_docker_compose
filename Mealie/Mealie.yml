@@ -15,7 +15,7 @@ services:
         limits:
           memory: 1000M
     volumes:
-      - mealie-data:/app/data/
+      - ${PATH_TO_SSD_APPDATA}/mealie-data:/app/data/
     environment:
       # Set Backend ENV Variables Here
       ALLOW_SIGNUP: "false"
