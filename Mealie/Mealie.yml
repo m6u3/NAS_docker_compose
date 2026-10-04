@@ -28,6 +28,13 @@ services:
       SMTP_FROM_EMAIL: ${BREVO_FROM_EMAIL}
       SMTP_USER: ${BREVO_USERNAME}
       SMTP_PASSWORD: ${BREVO_USER_PASSWORD}
+    networks:
+      - cf_tunnel_network
+      
+networks: 
+  cf_tunnel_network:
+    name: cf_tunnel_network
+    external: true
 
 volumes:
   mealie-data:
