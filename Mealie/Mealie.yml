@@ -19,10 +19,10 @@ services:
     environment:
       # Set Backend ENV Variables Here
       ALLOW_SIGNUP: "false"
-      PUID: 1000
-      PGID: 1000
-      TZ: America/Anchorage
-      BASE_URL: https://mealie.yourdomain.com
+      PUID: ${DOCKER_USER_PUID}
+      PGID: ${DOCKER_USER_PGID}
+      TZ: ${TZ_NY}
+      BASE_URL: ${BASE_MEALIE_URL}
 
 volumes:
   mealie-data:
