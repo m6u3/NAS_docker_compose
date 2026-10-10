@@ -25,7 +25,6 @@ services:
       - PGID=${DOCKER_USER_PGID}
     networks:
       - office-network
-      - cf_tunnel_network 
   #########################
   #     ONLY OFFICE       #
   #########################
@@ -42,12 +41,10 @@ services:
       - apparmor:unconfined
     privileged: true
     networks:
-      - office-network
-      - cf_tunnel_network 
+      - office-network 
     ports:
       - 9000:80
+      
 networks:
   office-network:
     driver: bridge
-  cf_tunnel_network:
-    external: true
