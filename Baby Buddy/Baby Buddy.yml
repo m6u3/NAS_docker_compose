@@ -17,10 +17,3 @@ services:
     ports:
       - 8000:8000
     restart: unless-stopped
-    networks:
-      - cf_tunnel_network
-      
-networks: 
-  cf_tunnel_network:
-    name: cf_tunnel_network
-    external: true
