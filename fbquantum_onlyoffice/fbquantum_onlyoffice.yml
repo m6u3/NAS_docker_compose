@@ -19,7 +19,7 @@ services:
       - ${PATH_TO_SSD_APPDATA}/filebrowser:/config
       - ${PATH_TO_SSD_APPDATA}/filebrowser/tmp:/tmp
     environment:
-      - FILEBROWSER_DATABASE_PATH=/config/db/database.db
+      - FILEBROWSER_DATABASE_PATH=/config/db/database_v2.db
       - FILEBROWSER_CONFIG=/config/config.yaml
       - PUID=${DOCKER_USER_PUID}
       - PGID=${DOCKER_USER_PGID}
