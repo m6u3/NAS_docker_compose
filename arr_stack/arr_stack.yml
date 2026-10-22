@@ -51,13 +51,13 @@ services:
       - 9696:9696 #prowlarr
       - 7878:7878 #radarr
       - 8989:8989 #sonarr
-      - 8686:8686 #lidarr
       - 5299:5299 #lazylibrarian
       - 6767:6767 #bazarr
       - 3000:3000 #http firefox
       - 3001:3001 #https firefox
       - 8200:8200 #duplicati
       # - 9666:9666 #pyload Click'N'Load port optional
+      # - 8686:8686 #lidarr
       # - 8265:8265 # Tdarr WebUI
       # - 8266:8266 # Tdarr Server
     volumes:
@@ -157,21 +157,21 @@ services:
   #########################
   # Lidarr               #
   #########################
-  lidarr:
-    image: lscr.io/linuxserver/lidarr:latest
-    container_name: lidarr
-    network_mode: "service:gluetun"
-    environment:
-      - PUID=${DOCKER_USER_PUID}
-      - PGID=${DOCKER_USER_PGID}
-      - TZ=${TZ_NY}
-    volumes:
-      - ${PATH_TO_SSD_APPDATA}/lidarr:/config
-      - ${PATH_TO_DATA}:/data
-      # - ${PATH_TO_DATA}/media/music:/music
-      # - ${PATH_TO_DATA}/downloads:/downloads
-    logging: *default-logging
-    restart: unless-stopped
+  # lidarr:
+  #   image: lscr.io/linuxserver/lidarr:latest
+  #   container_name: lidarr
+  #   network_mode: "service:gluetun"
+  #   environment:
+  #     - PUID=${DOCKER_USER_PUID}
+  #     - PGID=${DOCKER_USER_PGID}
+  #     - TZ=${TZ_NY}
+  #   volumes:
+  #     - ${PATH_TO_SSD_APPDATA}/lidarr:/config
+  #     - ${PATH_TO_DATA}:/data
+  #     # - ${PATH_TO_DATA}/media/music:/music
+  #     # - ${PATH_TO_DATA}/downloads:/downloads
+  #   logging: *default-logging
+  #   restart: unless-stopped
 
   #########################
   # LazyLibrarian         #
