@@ -9,8 +9,8 @@ services:
     restart: unless-stopped
     environment:
       - ConnectionStrings__DefaultConnection=Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD};
-      - Authentication__Username=${MAIL_ARCHIVER_USER}
-      - Authentication__Password=${MAIL_ARCHIVER_PASSWORD}
+      # - Authentication__Username=${MAIL_ARCHIVER_USER} # Only Used on first boot
+      # - Authentication__Password=${MAIL_ARCHIVER_PASSWORD} # Only Used on first boot
       - TimeZone__DisplayTimeZoneId=${TZ_NY}
     ports:
       - "5000:5000"
