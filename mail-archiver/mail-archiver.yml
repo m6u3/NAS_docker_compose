@@ -6,7 +6,7 @@
 services:
   mailarchive-app:
     image: s1t5/mailarchiver:latest
-    restart: always
+    restart: unless-stopped
     environment:
       - ConnectionStrings__DefaultConnection=Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD};
       - Authentication__Username=admin
