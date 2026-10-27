@@ -4,7 +4,7 @@
 # immich
 # 
 #########################
-#     General Info      #
+#     Immich Stack      #
 #########################
 name: immich
 services:
@@ -57,7 +57,7 @@ services:
       disable: false
       
   #########################
-  #        Redis          #
+  #     Immich Redis      #
   #########################
   redis:
     container_name: immich_redis
