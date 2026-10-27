@@ -16,5 +16,11 @@ services:
       - '5432:5432'
     volumes:
       - ${PATH_TO_SSD_APPDATA}/postgres/data:/var/lib/postgresql/data
+    networks:
+      - db-net
     restart: unless-stopped
+
+ networks:
+  db-net:
+    external: true   
 
