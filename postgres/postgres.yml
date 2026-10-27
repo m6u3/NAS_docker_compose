@@ -20,7 +20,7 @@ services:
     networks:
       - db-net
       
- networks:
+networks:
   db-net:
     driver: bridge
 
