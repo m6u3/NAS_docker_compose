@@ -22,5 +22,5 @@ services:
       
  networks:
   db-net:
-    external: true   
+    driver: bridge
 
