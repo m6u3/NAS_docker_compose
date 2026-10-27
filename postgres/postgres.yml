@@ -9,6 +9,7 @@
 services:
   postgres:
     image: postgres:${TAG}
+    container_name: nas-postgres
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
